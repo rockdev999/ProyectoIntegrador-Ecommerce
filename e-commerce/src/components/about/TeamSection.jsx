@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 // Componente para una Tarjeta de Miembro del Equipo
 function TeamCard({ image, name, title, social }) {
@@ -35,43 +35,42 @@ function TeamCard({ image, name, title, social }) {
 function TeamSection() {
   const team = [
     {
-      image: 'tomcruise.png', // Cambia esta URL por la imagen del miembro
-      name: 'Tom Cruise',
-      title: 'Founder & Chairman',
+      image: "tomcruise.png", // Cambia esta URL por la imagen del miembro
+      name: "Tom Cruise",
+      title: "Founder & Chairman",
       social: [
-        { name: 'twitter', url: 'https://twitter.com' },
-        { name: 'instagram', url: 'https://instagram.com' },
-        { name: 'linkedin', url: 'https://linkedin.com' },
+        { name: "twitter", url: "https://twitter.com" },
+        { name: "instagram", url: "https://instagram.com" },
+        { name: "linkedin", url: "https://linkedin.com" },
       ],
     },
     {
-      image: 'mujer.png', // Cambia esta URL por la imagen del miembro
-      name: 'Emma Watson',
-      title: 'Managing Director',
+      image: "mujer.png", // Cambia esta URL por la imagen del miembro
+      name: "Emma Watson",
+      title: "Managing Director",
       social: [
-        { name: 'twitter', url: 'https://twitter.com' },
-        { name: 'instagram', url: 'https://instagram.com' },
-        { name: 'linkedin', url: 'https://linkedin.com' },
+        { name: "twitter", url: "https://twitter.com" },
+        { name: "instagram", url: "https://instagram.com" },
+        { name: "linkedin", url: "https://linkedin.com" },
       ],
     },
     {
-      image: 'foto.png', // Cambia esta URL por la imagen del miembro
-      name: 'Will Smith',
-      title: 'Product Designer',
+      image: "foto.png", // Cambia esta URL por la imagen del miembro
+      name: "Will Smith",
+      title: "Product Designer",
       social: [
-        { name: 'twitter', url: 'https://twitter.com' },
-        { name: 'instagram', url: 'https://instagram.com' },
-        { name: 'linkedin', url: 'https://linkedin.com' },
+        { name: "twitter", url: "https://twitter.com" },
+        { name: "instagram", url: "https://instagram.com" },
+        { name: "linkedin", url: "https://linkedin.com" },
       ],
     },
   ];
 
   return (
     <div className="py-12">
-      <div className="container mx-auto px-4">
-       
+      <div className="container mx-auto px-4 flex flex-col justify-center items-center">
         {/* Grid de Tarjetas de Equipo */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-8">
           {team.map((member, index) => (
             <TeamCard
               key={index}

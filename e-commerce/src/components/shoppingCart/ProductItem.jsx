@@ -27,7 +27,7 @@ function ProductItem({ product }) {
   }, [quantity, product.product.price, product.product.id]);
 
   return (
-    <div className="grid grid-cols-4 gap-16 border border-slate-100 shadow p-8 font-medium items-center">
+    <div className="grid grid-cols-4 2xl:gap-16 border 2xl:border-slate-100 shadow gap-16 2xl:p-8 font-medium items-center">
       <div className="flex items-center gap-4">
         <button className="flex items-center gap-4" onClick={toggleClose}>
           <div className="flex">
@@ -44,7 +44,7 @@ function ProductItem({ product }) {
             <img
               src={product.product.img}
               alt={product.product.title}
-              className="w-20 z-0"
+              className="2xl:w-20 z-0"
             />
           </div>
           <p>{product.product.title}</p>
@@ -52,7 +52,7 @@ function ProductItem({ product }) {
       </div>
       <p>${product.product.price}</p>
       <div>
-        <div className="flex gap-2 w-4/12 border-2 border-gray-700 rounded justify-evenly p-1 items-center">
+        <div className="flex gap-2 w-4/12 2xl:border-2 2xl:border-gray-700 rounded justify-evenly p-1 items-center">
           <span className="cantidad ml-2 w-2/5">{quantity}</span>
           <div className="flex flex-col text-xs">
             <button onClick={increase}>
@@ -83,6 +83,5 @@ ProductItem.propTypes = {
     }).isRequired,
   }).isRequired,
 };
-
 
 export default ProductItem;

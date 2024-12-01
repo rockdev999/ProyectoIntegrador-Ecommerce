@@ -3,15 +3,17 @@ import PropTypes from "prop-types";
 function StatsCard({ icon, value, label }) {
   return (
     <div
-      className={`flex flex-col items-center justify-center shadow-lg p-5 rounded-lg hover:bg-red-500 cursor-pointer`}
+      className={`flex flex-col items-center justify-center shadow-lg p-4 rounded-lg hover:bg-red-500 cursor-pointer`}
     >
-      <div className="m-3 bg-black w-[70px] h-[70px] rounded-full flex justify-center items-center border-[11px] border-neutral-300 hover:border-neutral-200">
-        <span className="material-icons bg-black text-white text-3xl">
+      <div className="m-3 bg-black w-14 h-14 rounded-full flex justify-center items-center border-4 border-neutral-300 hover:border-neutral-200 md:w-16 md:h-16 lg:w-20 lg:h-20">
+        <span className="material-icons bg-black text-white text-2xl md:text-3xl lg:text-4xl">
           {icon}
         </span>
       </div>
-      <div className="text-4xl font-bold">{value}</div>
-      <div className="text-sm mt-2">{label}</div>
+      <div className="text-xl font-bold md:text-2xl lg:text-3xl">{value}</div>
+      <div className="text-sm mt-2 text-center md:text-base lg:text-lg">
+        {label}
+      </div>
     </div>
   );
 }
@@ -39,17 +41,15 @@ function StatsGrid() {
   ];
 
   return (
-    <div className="w-full px-32 justify-between">
-      {" "}
-      {/* Limita el ancho del contenedor y lo centra */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 ">
+    <div className="w-full px-4">
+      {/* Grid con diseño mobile-first */}
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 sm:gap-6">
         {stats.map((stat, index) => (
           <StatsCard
             key={index}
             icon={stat.icon}
             value={stat.value}
             label={stat.label}
-            highlighted={stat.highlighted}
           />
         ))}
       </div>
@@ -57,15 +57,12 @@ function StatsGrid() {
   );
 }
 
-// Envolviendo el componente con un div externo para modular la altura
-function StatsPage() {
+function Slider() {
   return (
-    <div className="h-96 flex items-center justify-center">
-      {" "}
-      {/* Controla la altura de toda la sección */}
+    <div className="h-auto flex items-center justify-center py-6 md:py-10 lg:py-14">
       <StatsGrid />
     </div>
   );
 }
 
-export default StatsPage;
+export default Slider;

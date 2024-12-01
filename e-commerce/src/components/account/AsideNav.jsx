@@ -3,7 +3,7 @@ import { ValidatorProvider } from "../../context/ValidationRoute";
 import { useContext, useEffect } from "react";
 
 function AsideNav({ displayForm, displayAddres, displayPayment }) {
-  const {emailValidation}  = useContext(ValidatorProvider);
+  const { emailValidation } = useContext(ValidatorProvider);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,7 +28,7 @@ function AsideNav({ displayForm, displayAddres, displayPayment }) {
     }
   };
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 hidden sm:flex">
       <div>
         <h6 className="font-bold text-lg cursor-pointer border-b w-fit border-transparent hover:border-black ">
           Manage My Account

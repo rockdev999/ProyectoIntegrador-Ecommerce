@@ -1,23 +1,24 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { ValidatorProvider } from "../../context/ValidationRoute";
 
 function Navbar() {
   const navigate = useNavigate();
   const [contract, setContract] = useState(false);
-
+  const { emailValidation, setEmailValidation, user } =
+    useContext(ValidatorProvider);
 
   const navigation = () => {
     navigate("/");
   };
 
-
-  const toggleContract = ()=>{
-    if(!contract){
-      setContract(true)
-    }else{
-      setContract(false)
+  const toggleContract = () => {
+    if (!contract) {
+      setContract(true);
+    } else {
+      setContract(false);
     }
-  }
+  };
 
   return (
     <nav className="grid border-b-2 pb-4 ">
@@ -38,40 +39,99 @@ function Navbar() {
         </div>
       </div>
 
-    <div className={`flex lg:hidden w-full flex-end  justify-between px-4 pt-4 mt-20 `}>
-    <Link to='/' className="font-bold text-lg">Exclusive</Link>
-      <button className="material-symbols-outlined w-max" onClick={toggleContract}>menu</button>
-    </div>
+      <div
+        className={`flex lg:hidden w-full flex-end  justify-between px-4 pt-4 mt-20 `}
+      >
+        <Link to="/" className="font-bold text-lg">
+          Exclusive
+        </Link>
+        <button
+          className="material-symbols-outlined w-max"
+          onClick={toggleContract}
+        >
+          menu
+        </button>
+      </div>
 
-    <div className={`${contract ? "hidden" : "grid"}  gap-2 lg:hidden pt-4 `}>
-    <ul className="grid grid-cols-4" >
-      <li className="flex justify-center">
-        <Link to='/' className="border-b-2 border-transparent hover:border-b-2 hover:border-slate-400 text-sm ">Home</Link>
-      </li>
-      <li className="flex justify-center">
-        <Link to="/contact" className="border-b-2 border-transparent hover:border-b-2 hover:border-slate-400 text-sm">Contact</Link>
-      </li>
-      <li className="flex justify-center">
-        <Link to="/about" className="border-b-2 border-transparent hover:border-b-2 hover:border-slate-400 text-sm">About</Link>
-      </li>
-      <li className="flex justify-center">
-        <Link to="/login" className="border-b-2 border-transparent hover:border-b-2 hover:border-slate-400 text-sm">Sing Up</Link>
-      </li>
-   
-    </ul>
-    <ul className="grid grid-cols-3">
-    <li className="flex justify-center">
-        <Link className="material-symbols-outlined"> search</Link>
-      </li>
-      <li className=" flex justify-center">
-        <Link className="text-sm cursor-pointer">♡</Link>
-      </li>
-      <li className=" flex justify-center">
-        <Link to='/carrito' className="material-symbols-outlined cursor-pointer">shopping_cart</Link>
-      </li>
-    </ul>
-    </div>
-    
+      <div className={`${contract ? "hidden" : "grid"}  gap-2 lg:hidden pt-4 `}>
+        <ul className="grid grid-cols-4">
+          <li className="flex justify-center">
+            <Link
+              to="/"
+              className="border-b-2 border-transparent hover:border-b-2 hover:border-slate-400 text-sm "
+            >
+              Home
+            </Link>
+          </li>
+          <li className="flex justify-center">
+            <Link
+              to="/contact"
+              className="border-b-2 border-transparent hover:border-b-2 hover:border-slate-400 text-sm"
+            >
+              Contact
+            </Link>
+          </li>
+          <li className="flex justify-center">
+            <Link
+              to="/about"
+              className="border-b-2 border-transparent hover:border-b-2 hover:border-slate-400 text-sm"
+            >
+              About
+            </Link>
+          </li>
+          <li className="flex justify-center w-[75px] flex-col">
+            {emailValidation ? (
+              <div className="flex gap-2 justify-center">
+                <Link
+                  to={`/account/${user.email}`}
+                  className="hover:border-b-2 hover:border-slate-400"
+                >
+                  Profile
+                </Link>
+                <button
+                  className="bg-red-600 text-gray-100 font-light py-0 px-6 border border-transparent rounded hover:bg-black"
+                  onClick={(e) => {
+                    setEmailValidation(false);
+                  }}
+                >
+                  Log Out
+                </button>
+              </div>
+            ) : (
+              <>
+                <Link
+                  to="/create-account"
+                  className="border-b-2 text-center border-transparent hover:border-b-2 hover:border-slate-400 text-sm"
+                >
+                  Sing In
+                </Link>
+                <Link
+                  to="/login"
+                  className="border-b-2 text-center border-transparent hover:border-b-2 hover:border-slate-400 text-sm"
+                >
+                  Sing Up
+                </Link>
+              </>
+            )}
+          </li>
+        </ul>
+        <ul className="grid grid-cols-3">
+          <li className="flex justify-center">
+            <Link className="material-symbols-outlined"> search</Link>
+          </li>
+          <li className=" flex justify-center">
+            <Link className="text-sm cursor-pointer">♡</Link>
+          </li>
+          <li className=" flex justify-center">
+            <Link
+              to="/carrito"
+              className="material-symbols-outlined cursor-pointer"
+            >
+              shopping_cart
+            </Link>
+          </li>
+        </ul>
+      </div>
 
       <div className={`hidden lg:grid lg:grid-cols-5 mt-20 mx-32`}>
         <button
@@ -85,7 +145,7 @@ function Navbar() {
           className="grid grid-cols-5  col-span-3 items-center pt-2"
         >
           <li className="col-span-1 font-medium">
-            <Link className="hover:border-b-2 hover:border-slate-400 " to='/'>
+            <Link className="hover:border-b-2 hover:border-slate-400 " to="/">
               Home
             </Link>
           </li>
@@ -106,17 +166,40 @@ function Navbar() {
             </Link>
           </li>
           <li className=" flex gap-2 col-span-1 font-medium">
-            <Link
-              className="border-b-2 border-transparent hover:border-b-2 hover:border-slate-400"
-              to="create-account"
-            >
-              Sing Up
-            </Link>
-            <div>/</div>
-            <Link className="border-b-2 border-transparent  hover:border-b-2 hover:border-slate-400"
-              to="login">
-            Sing In
-            </Link>
+            {emailValidation ? (
+              <div className="flex gap-6">
+                <Link
+                  to={`/account/${user.email}`}
+                  className="hover:border-b-2 hover:border-slate-400"
+                >
+                  Profile
+                </Link>
+                <button
+                  className="bg-red-600 text-gray-100 font-medium px-4 border border-transparent rounded hover:bg-black"
+                  onClick={(e) => {
+                    setEmailValidation(false);
+                  }}
+                >
+                  Log Out
+                </button>
+              </div>
+            ) : (
+              <>
+                <Link
+                  className="border-b-2 border-transparent hover:border-b-2 hover:border-slate-400"
+                  to="create-account"
+                >
+                  Sing Up
+                </Link>
+                <div>/</div>
+                <Link
+                  className="border-b-2 border-transparent  hover:border-b-2 hover:border-slate-400"
+                  to="login"
+                >
+                  Sing In
+                </Link>
+              </>
+            )}
           </li>
         </ul>
         <div className="flex  justify-between">
@@ -130,9 +213,7 @@ function Navbar() {
               type="text"
               placeholder="What are you looking for?"
             />
-            <button
-              className="flex items-center active:bg-black active:text-white rounded"
-            >
+            <button className="flex items-center active:bg-black active:text-white rounded">
               <span className="material-symbols-outlined">search</span>
             </button>
           </label>

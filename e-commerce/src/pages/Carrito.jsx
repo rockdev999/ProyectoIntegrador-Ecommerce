@@ -4,10 +4,10 @@ import TotalProducts from "../components/shoppingCart/TotalProducts";
 
 function Carrito() {
   return (
-    <section className=" mx-32">
-      <NavLinks/>
+    <section className="2xl:mx-32">
+      <NavLinks route="shop" />
       <TotalProducts />
-      <CartTotal/>
+      <CartTotal />
     </section>
   );
 }

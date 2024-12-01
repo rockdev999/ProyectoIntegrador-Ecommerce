@@ -1,13 +1,11 @@
 import { ProductContext } from "../../context/ProductTotalPrice";
-import  {useContext} from 'react'
+import { useContext } from "react";
 function CartTotal() {
-  const { total } = useContext(ProductContext)
-
-
+  const { total } = useContext(ProductContext);
 
   return (
-    <div className="grid grid-cols-3 pt-12">
-      <div className="grid col-span-2 grid-cols-2 gap-8">
+    <div className="flex flex-col 2xl:grid 2xl:grid-cols-3 pt-12">
+      <div className="grid col-span-2 grid-cols-2 gap-6 2xl:gap-8">
         <div className="flex border border-black h-16 px-4 rounded items-center justify-center">
           <input
             className="w-full focus:outline-none"
@@ -36,7 +34,7 @@ function CartTotal() {
           </div>
           <div className="flex justify-between font-normal">
             <p>Total:</p>
-            <p>${total}</p> 
+            <p>${total}</p>
           </div>
           <button className="m-auto text-white rounded py-4 px-10 bg-red-500 hover:bg-black hover:text-white">
             Proceed to checkout

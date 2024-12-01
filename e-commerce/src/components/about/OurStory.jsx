@@ -30,7 +30,7 @@ function OurStory() {
               ranging from consumer.
             </article>
           </div>
-          <div className="h-full lg:w-[70%] xl:w-[60%] 2xl:w-[4000px]">
+          <div className=" h-full lg:w-[70%] xl:w-[60%] 2xl:w-[4000px]">
             <img className="h-full w-full" src={logo} alt="logo about" />
           </div>
         </div>

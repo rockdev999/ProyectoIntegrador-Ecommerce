@@ -15,9 +15,9 @@ import CheckOut from "./pages/CheckOut";
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
       <ProductProvider>
         <ValidationRoute>
+          <Navbar />
           <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="/carrito" element={<Carrito />} />
@@ -25,8 +25,8 @@ function App() {
             <Route path="/create-account" element={<CreateAccount />} />
             <Route path="/login" element={<Login />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/account" element={<Account/>}/>
-            <Route path="/checkout" element={<CheckOut/>}/>
+            <Route path="/account/:email" element={<Account />} />
+            <Route path="/checkout" element={<CheckOut />} />
           </Routes>
         </ValidationRoute>
       </ProductProvider>
